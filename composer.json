@@ -1,7 +1,8 @@
 {
 	"name" : "syncgw/rpc-bundle",
+	"description" : "sync•gw RPC (Wire Format Protocol) bundle.",
 	"license" : "LGPL-3.0-or-later",
-	"homepage" : "https://github.com/syncgw/file-bundle",
+	"homepage" : "https://github.com/syncgw/rpc-bundle",
 	"authors" : [{
 			"name" : "Florian Daeumling",
 			"homepage" : "https://github.com/toteph42"
