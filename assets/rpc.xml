@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+<!--
+
+   	[MS-OXCRPC] Wire Format Protocol
+
+ 	@package	sync*gw
+   	@subpackage	Wire Format Protocol
+ 	@copyright	(c) 2008 - 2023 Florian Daeumling, Germany. All right reserved
+  	@license 	LGPL-3.0-or-later
+
+-->
+<syncgw>
+  
+  <RPC_HEADER>
+	<Version T="I" S="2">0</Version>
+	<Flags T="I" S="2" F="HEADER">Last</Flags>
+	<Size T="I" S="2"/>
+	<ActualSize T="I" S="2"/>
+  </RPC_HEADER>
+  
+  <AUX_HEADER>
+	<AUXSize T="I" S="2"/>
+	<AuxVersion T="I" S="1"/>
+	<AuxType T="I" S="1" D="AUX_TYPE"/>
+  </AUX_HEADER>
+ 
+  <PERF_REQUESTID>
+ 	<SessionID T="I" S="2"/>
+	<RequestID T="I" S="2"/>
+  </PERF_REQUESTID>
+  
+  <PERF_SESSIONINFO>
+  	<SessionID T="I" S="2"/>
+	<Reserved T="I" S="2"/>
+  	<SessionGuid T="G"/>
+  </PERF_SESSIONINFO>
+  
+   <PERF_SESSIONINFO2>
+  	<SessionID T="I" S="2"/>
+	<Reserved T="I" S="2"/>
+  	<SessionGuid T="G"/>
+	<ConnectionID T="I" S="4"/>
+  </PERF_SESSIONINFO2>
+  
+  <PERF_CLIENTINFO>
+	<AdapterSpeed T="I" S="4"/>
+	<ClientID T="I" S="2"/>
+	<MachineNameOffset T="I" S="2"/>
+	<UserNameOffset T="I" S="2"/>
+	<ClientIPSize T="I" S="2"/>
+	<ClientIPOffset T="I" S="2"/>
+	<ClientIPMaskSize T="I" S="2"/>
+	<ClientIPMaskOffset T="I" S="2"/>
+	<AdapterNameOffset T="I" S="2"/>
+	<MacAddressSize T="I" S="2"/>
+	<MacAddressOffset T="I" S="2"/>
+	<ClientMode T="I" S="2" D="AUX_CLIENT_MODE"/>
+	<Reserved T="I" S="2"/>
+	<MachineName T="S"/>
+	<UserName T="S" J="UserNameOffset"/>
+	<ClientIP T="S" J="ClientIPOffset"/>
+	<ClientIPMask T="S" J="ClientIPMaskOffset"/>
+	<AdapterName T="S" J="AdapterNameOffset"/>
+	<MacAddress T="S" J="MacAddressOffset" S="MacAddressSize"/>
+  </PERF_CLIENTINFO>
+ 
+  <PERF_SERVERINFO>
+	<ServerID T="I" S="2"/>
+ 	<ServerType T="I" S="2" D="AUX_SERVER_TYPE"/>
+	<ServerDNOffset T="I" S="2"/>
+	<ServerNameOffset T="I" S="2"/>
+	<ServerDN T="S" J="ServerDNOffset"/>
+	<ServerName T="S" J="ServerNameOffset"/>
+  </PERF_SERVERINFO>
+
+  <!-- 
+  		DEFMDB_SUCCESS
+  		PERF_DEFGC_SUCCESS 
+  		PERF_MDB_SUCCESS
+  		PERF_GC_SUCCESS
+  		PERF_FAILURE
+  -->
+  
+   <CLIENT_CONTROL>
+	<EnableFlags T="I" S="4" F="CLIENT_CONTROL">0</EnableFlags>
+	<ExpiryTime T="I" S="4">60480</ExpiryTime>
+  </CLIENT_CONTROL>
+
+  <PERF_PROCESSINFO>
+	<ProcessID T="I" S="2"/>
+	<Reserved T="I" S="2"/>
+	<ProcessGuid T="G"/>
+	<ProcessNameOffset T="I" S="2"/>
+	<Reserved T="I" S="2"/>
+	<ProcessName T="S" J="ProcessNameOffset"/>
+  </PERF_PROCESSINFO>
+
+  <!-- 
+  		PERF_BG_DEFMDB_SUCCESS
+  		PERF_BG_DEFGC_SUCCESS
+  		PERF_BG_MDB_SUCCESS
+  		PERF_BG_GC_SUCCESS
+  		PERF_BG_FAILURE
+  		PERF_FG_DEFMDB_SUCCESS
+  		PERF_FG_DEFGC_SUCCESS
+  		PERF_FG_MDB_SUCCESS
+ 		PERF_FG_GC_SUCCESS
+  		PERF_FG_FAILURE
+ 		OSVERSIONINFO
+  -->
+  
+  <EXORGINFO>
+	<OrgFlags T="I" S="4" F="EXORGINFO">PublicFolderEnabled|UseAutoDiscover</OrgFlags>
+  </EXORGINFO>
+
+  <PERF_ACCOUNTINFO>
+  	<ClientID T="I" S="2"/>
+  	<Reserved T="I" S="2"/>
+  	<Account T="G"/>
+  </PERF_ACCOUNTINFO>
+ 
+ <!-- 
+  		SERVER_CAPABILITIES
+ -->
+  
+  <ENDPOINT_CAPABILITIES>
+	<EndpointCapFlag T="I" S="4" D="AUX_CAPABILITIES">SingleEndpoint</EndpointCapFlag >
+  </ENDPOINT_CAPABILITIES>
+
+  <CLIENT_CONNECTION_INFO>
+ 	<ConnectionGUID T="G"/>
+	<OffsetConnectionContextInfo T="I" S="2"/>
+ 	<Reserved T="I" S="2"/>
+ 	<ConnectionAttempts T="I" S="4"/>
+ 	<ConnectionFlags T="I" S="4"/>
+	<ConnectionContextInfo T="S" J="OffsetConnectionContextInfo"/>
+  </CLIENT_CONNECTION_INFO>
+ 
+ <!-- 
+  		SERVER_SESSION_INFO
+  		PROT_DEVICE_IDENTIFICATION
+ -->
+ 
+  <UNKNOWN>
+    <Reserved T="I" S="4"/>
+  </UNKNOWN>
+  
+</syncgw>
