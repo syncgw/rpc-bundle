@@ -45,18 +45,14 @@ class rpcHandler extends mapiWBXML {
 	 * 	Collect information about class
 	 *
 	 * 	@param 	- Object to store information
-     *	@param 	- true = Provide status information only (if available)
 	 */
-	public function getInfo(XML &$xml, bool $status): void {
+	public function getInfo(XML &$xml): void {
 
 		$xml->addVar('Name', 'Wire Format Protocol handler class');
 
 		$xml->addVar('Opt', '<a href="https://learn.microsoft.Object/en-us/openspecs/exchange_server_protocols/ms-oxcrpc" target="_blank">[MS-OXCRPC]</a> '.
-				      'Wire Format Protocol v23.1');
-		$xml->addVar('Stat', 'Implemented');
-
-		$srv = Server::getInstance();
-		$srv->getSupInfo($xml, $status, 'mapi/rpc', [ 'rpcDefs' ]);
+				      'Wire Format Protocol');
+		$xml->addVar('Stat', 'v23.1');
 	}
 
 	/**
